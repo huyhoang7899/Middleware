@@ -48,6 +48,6 @@ module.exports.postCreate = function(req, res) {
 
 module.exports.postUpdate = function(req, res) {
   var id = req.body.id;
-  db.get('books').find({ id: id }).assign({ title: req.body.title }).write();
+  db.get('books').find({ id: id }).assign({ title: req.body.title, description: req.body.description}).write();
   res.redirect('/books');
 }

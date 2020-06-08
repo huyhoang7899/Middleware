@@ -56,14 +56,7 @@ module.exports.postUpdate = function(req, res) {
 
 module.exports.complete = function(req, res) {
   var id = req.params.id;
-  var transaction = db.get('transactions').find({ id: id }).value();
-  if (!transaction) {
-     res.render('transaction/index', {
-      transactions: db.get('transactions').value(),
-      error: "Not found ID in transactions !" 
-      });
-  } else {
-      db.get('transactions').find({ id: id }).assign({ isComplete: true }).write()
-      res.redirect('/transactions');
-  }
+
+  db.get('transactions').find({ id: id }).assign({ isComplete: true }).write()
+  res.redirect('/transactions');
 }

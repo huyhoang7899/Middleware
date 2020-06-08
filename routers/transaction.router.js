@@ -1,5 +1,6 @@
 var express = require('express');
 var controller = require('../controllers/transaction.controller');
+var validation = require('../validation/transaction.validation');
 
 var router = express.Router();
 
@@ -11,7 +12,7 @@ router.get('/:id/update', controller.update);
 
 router.get('/:id/delete', controller.delete);
 
-router.get('/:id/complete', controller.complete);
+router.get('/:id/complete', validation.complete, controller.complete);
 
 router.get('/search', controller.search);
 
